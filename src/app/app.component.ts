@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'change-detection';
+  users = [
+    { name: 'Dhruvil' },
+    { name: 'Nirav' },
+    { name: 'Brijesh' },
+    { name: 'Nikil' }
+  ]
+
+  onTyped(value: any) {
+    console.log("text entered")
+  }
 }
