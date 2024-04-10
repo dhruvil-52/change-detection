@@ -17,4 +17,9 @@ export class AppComponent {
   onTyped(value: any) {
     console.log("text entered")
   }
+
+  changeArr(){
+    this.users[0].name="kano";
+    console.log("button clicked")
+  }
 }
