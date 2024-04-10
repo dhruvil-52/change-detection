@@ -18,8 +18,10 @@ export class AppComponent {
     console.log("text entered")
   }
 
-  changeArr(){
-    this.users[0].name="kano";
+  changeArr() {
+    this.users[0] = {
+      ...this.users[0], name: "kano"
+    };
     console.log("button clicked")
   }
 }
