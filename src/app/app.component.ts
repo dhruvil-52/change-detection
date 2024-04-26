@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,10 @@ export class AppComponent {
     { name: 'Nikil' }
   ]
 
+  constructor(private cdr:ChangeDetectorRef){
+
+  }
+
   onTyped(value: any) {
     console.log("text entered")
   }
@@ -24,5 +28,6 @@ export class AppComponent {
       name: "Kano"
     };
     console.log("button clicked")
+    this.cdr.detectChanges();
   }
 }
