@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -9,10 +9,16 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 export class ChildComponent implements OnInit {
 
   @Input() user: any;
+  num: number = 0;
 
-  constructor() { }
+  constructor(private cdr:ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    // setInterval not work with onPush without telling angular to detect change by this.cdr.detectChanges();
+    setInterval(() => {
+      this.num = this.num + 1;
+      this.cdr.detectChanges();
+    }, 100);
   }
 
   callFunc() {
