@@ -20,7 +20,8 @@ export class AppComponent {
 
   changeArr() {
     this.users[0] = {
-      ...this.users[0], name: "kano"
+      ...this.users[0],
+      name: "Kano"
     };
     console.log("button clicked")
   }

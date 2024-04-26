@@ -1,9 +1,13 @@
+<strong>Child</strong>
+<br>
 >> for checking how many times below code execute, pls check console <br>
 <app-child *ngFor="let _user of users" [user]="_user"></app-child>
-
+<hr>
+<strong>Parent</strong>
 <br>
+>> even if you are enter any text in below input, also effect in child comps, pls check console, althogh in parent comp
+change effects on child
 <br>
->> even if you are enter any text in below input, also effect in child comps, pls check console <br>
 <input type="text" (keyup)="onTyped($event)" placeholder="Enter something">
 
 
