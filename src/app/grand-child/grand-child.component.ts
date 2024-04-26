@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-grand-child',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./grand-child.component.scss']
 })
 export class GrandChildComponent implements OnInit {
-
+  @Input() array: number[] = [];
   constructor() {
   }
 

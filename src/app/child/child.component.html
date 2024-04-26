@@ -1,4 +1,4 @@
-<app-grand-child></app-grand-child>
+<app-grand-child [array]="arr"></app-grand-child>
 <br>
 <div class="container">
     User {{callFunc()}} >><strong> {{user.name}} </strong>
@@ -6,4 +6,5 @@
 
 <!-- {{num}} -->
 <br>
+<button type="button" (click)="startPushingInArray()">start Pushing In Array</button>
 <hr>

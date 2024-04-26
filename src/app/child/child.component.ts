@@ -8,6 +8,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, O
 })
 export class ChildComponent implements OnInit, OnChanges {
 
+  arr: number[] = [];
   @Input() user: any;
   // num: number = 0;
 
@@ -34,6 +35,22 @@ export class ChildComponent implements OnInit, OnChanges {
 
   callFunc() {
     console.log("counter increased")
+  }
+
+
+
+  startPushingInArray() {
+    setInterval(() => {
+      //  below print arr in grand child
+      // this.arr = [1, 2]
+      //  below not print arr in grand child because it not chnage arr reference
+      // this.arr.push(Math.random())
+
+      //  below print arr in grand child because it chnage arr reference
+      this.arr.push(Math.random())
+      this.arr = [...this.arr]
+      this.cdr.detectChanges();
+    }, 1000)
   }
 
 }
