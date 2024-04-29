@@ -8,5 +8,8 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule, { ngZone: 'noop' })
+// whole app is outside of ngZone (angular not detect any changes as app is out of angular's change detection)
+// platformBrowserDynamic().bootstrapModule(AppModule, { ngZone: 'noop' })
+//   .catch(err => console.error(err));
+platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

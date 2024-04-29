@@ -28,6 +28,6 @@ export class AppComponent {
       name: "Kano"
     };
     console.log("button clicked")
-    this.cdr.detectChanges();
+    // this.cdr.detectChanges();
   }
 }
