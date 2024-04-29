@@ -9,9 +9,7 @@ export class AppComponent {
   title = 'change-detection';
   users = [
     { name: 'Dhruvil' },
-    { name: 'Nirav' },
     { name: 'Brijesh' },
-    { name: 'Nikil' }
   ]
 
   constructor(private cdr:ChangeDetectorRef){
