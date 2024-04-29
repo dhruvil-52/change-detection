@@ -4,9 +4,9 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, O
   selector: 'app-child',
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChildComponent implements OnInit, OnChanges {
+export class ChildComponent implements OnInit, OnChanges, DoCheck {
 
   arr: number[] = [];
   @Input() user: any;
@@ -32,6 +32,8 @@ export class ChildComponent implements OnInit, OnChanges {
     //   this.num = this.num + 1;
     //   this.cdr.detectChanges();
     // }, 100);
+
+    // put code and remove from angular CD for it you have to make change detection default
     let counter = 0;
     this.ngZone.runOutsideAngular(() => {
       setInterval(() => {
@@ -49,6 +51,11 @@ export class ChildComponent implements OnInit, OnChanges {
         }
       }, 1000);
     })
+  }
+
+  ngDoCheck(): void {
+    this.numOfChangeDetected++;
+    console.log(`no Of Change Detected in CHILD ${this.numOfChangeDetected}`)
   }
 
   callFunc() {
