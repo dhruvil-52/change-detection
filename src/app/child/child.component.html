@@ -1,10 +1,15 @@
-<app-grand-child [array]="arr"></app-grand-child>
+<strong>Child</strong>
 <br>
-<div class="container">
-    User {{callFunc()}} >><strong> {{user.name}} </strong>
-</div>
-
-<!-- {{num}} -->
+User {{callFunc()}} >><strong> {{user.name}} </strong>
+<br>
+num <span title="It'll show changes after 10 second from 11 as it'll put in angular CD after 10 seconds">
+💡
+</span>:
+{{num}}
 <br>
 <button type="button" (click)="startPushingInArray()">start Pushing In Array</button>
+<br>
+<br>
+
+<app-grand-child [array]="arr"></app-grand-child>
 <hr>

@@ -1,18 +1,19 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnChanges, SimpleChanges, DoCheck, NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-child',
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChildComponent implements OnInit, OnChanges {
 
   arr: number[] = [];
   @Input() user: any;
-  // num: number = 0;
+  numOfChangeDetected: number = 0;
+  num: number = 0;
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone) {
     // below code tell angular to detach this comp from change detection, event @Input data we cant get
     // cdr.detach();
   }
@@ -31,6 +32,23 @@ export class ChildComponent implements OnInit, OnChanges {
     //   this.num = this.num + 1;
     //   this.cdr.detectChanges();
     // }, 100);
+    let counter = 0;
+    this.ngZone.runOutsideAngular(() => {
+      setInterval(() => {
+        counter++
+        // after 10 sec setInterval detect change in num
+        if (counter > 10) {
+          this.ngZone.run(() => {
+            this.num = this.num + 1;
+          })
+          // above and below both code do same thing
+          // this.num = this.num + 1;
+          // this.cdr.detectChanges();
+        } else {
+          this.num = this.num + 1;
+        }
+      }, 1000);
+    })
   }
 
   callFunc() {
